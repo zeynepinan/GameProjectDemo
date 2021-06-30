@@ -12,13 +12,13 @@ namespace GameProjectDemo
 			gamer.Id = 1;
 			gamer.FirstName = "Zeynep";
 			gamer.LastName = "İnan";
-			gamer.NationalityId = "11111111111";
+			gamer.NationalityId = "111111111";
 			gamer.Email = "zey@gmail.com";
 			gamer.Password = "zey";
 			gamer.DateOfBirth = new DateTime(1998, 2, 10);
 
 
-			GamerManager gamerManager = new GamerManager();
+			GamerManager gamerManager = new GamerManager(new CheckPersonManager());
 			gamerManager.Add(gamer);
 			gamerManager.Delete(gamer);
 			gamerManager.Update(gamer);

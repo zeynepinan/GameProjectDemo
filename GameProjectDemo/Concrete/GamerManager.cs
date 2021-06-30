@@ -8,9 +8,23 @@ namespace GameProjectDemo.Concrete
 {
     public class GamerManager : IGamerService
     {
+        ICheckPersonService _checkPersonService;
+
+        public GamerManager(ICheckPersonService checkPersonService)
+        {
+            _checkPersonService = checkPersonService;
+        }
+
         public void Add(Gamer gamer)
         {
-            Console.WriteLine(gamer.FirstName +" " + gamer.LastName +" adlı oyuncu sisteme eklendi");
+            if (_checkPersonService.CheckOfRealPerson(gamer))
+            {
+                Console.WriteLine(gamer.FirstName + " " + gamer.LastName + " adlı oyuncu sisteme eklendi");
+            }
+            else
+            {
+                Console.WriteLine("Doğrulama yapılamadı.");
+            }
         }
 
         public void Delete(Gamer gamer)
